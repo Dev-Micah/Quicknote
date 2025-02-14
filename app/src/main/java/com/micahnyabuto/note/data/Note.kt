@@ -1,7 +1,7 @@
 package com.micahnyabuto.note.data
 
 data class Note(
-    val id : Int,
-    val noteContent: String,
-    val TimeCreatedAt: Int
+    val id : String,
+    val content: String,
+    val timeCreatedAt: Int
 )
