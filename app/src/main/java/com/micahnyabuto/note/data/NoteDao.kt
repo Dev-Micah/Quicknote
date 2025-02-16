@@ -22,7 +22,7 @@ interface NoteDao {
     @Query("SELECT * from notes WHERE id = :id")
     fun getItem(id: Int): Flow<Note>
 
-    @Query("SELECT * from notes ORDER BY name ASC")
+    @Query("SELECT * from notes ORDER BY content ASC")
     fun getAllItems(): Flow<List<Note>>
 
 }
