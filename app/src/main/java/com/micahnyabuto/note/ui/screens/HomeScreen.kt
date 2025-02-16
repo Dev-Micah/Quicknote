@@ -19,8 +19,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
@@ -30,6 +30,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.micahnyabuto.note.R
 import com.micahnyabuto.note.data.Note
 
@@ -37,7 +38,7 @@ import com.micahnyabuto.note.data.Note
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    //navigateToNoteEntry: () -> Unit,
+    navController: NavController,
     modifier: Modifier = Modifier
 
 ){
@@ -46,15 +47,21 @@ fun HomeScreen(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
-            NoteTopAppBar(
-                title= stringResource(R.string.note_title),
-                canNavigateBack = false,
-                scrollBehavior = scrollBehavior
-
-            ) },
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                title = {
+                    Text("Notes")
+                }
+            )
+            },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {},
+                onClick = {navController.navigate("entry")
+                    
+                },
                 shape = RoundedCornerShape(70.dp),
                 modifier = Modifier
                     .padding(
@@ -82,20 +89,7 @@ fun HomeScreen(
     }
 
 }
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun NoteTopAppBar(
-    title: String,
-    canNavigateBack: Boolean,
-    scrollBehavior: TopAppBarScrollBehavior,
-    modifier: Modifier = Modifier)
-{
-    SmallTopAppBar(
-        scrollBehavior = scrollBehavior,
-        title = { Text(text = title) },
-        modifier = modifier
-    )
-}
+
 
 @Composable
 private fun HomeBody(
@@ -167,7 +161,7 @@ private fun NoteItem(
                 modifier = Modifier.fillMaxWidth(),
             ){
                 Text(
-                    text = note.id,
+                    text = note.content,
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.weight(1f)
                 )
