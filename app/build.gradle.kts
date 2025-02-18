@@ -66,6 +66,10 @@ dependencies {
     //Navigation dependencies
     val nav_version = "2.8.7" // Use the latest stable version
 
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation(libs.androidx.navigation.compose)
+
+    //Viewmodel dependencies
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
 
 }
