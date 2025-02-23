@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.micahnyabuto.note.ui.screens.EntryScreen
 import com.micahnyabuto.note.ui.screens.HomeScreen
+import com.micahnyabuto.note.ui.screens.NoteDetailScreen
 
 @Composable
 fun NoteApp(){
@@ -16,7 +17,9 @@ fun NoteApp(){
 
         composable("home") { HomeScreen(navController) }
 
-        composable("entry"){ EntryScreen(navigateBack = {navController.navigateUp()}, onNavigateUp = {navController.navigateUp()})}}
+        composable("entry"){ EntryScreen(navigateBack = {navController.navigateUp()}, onNavigateUp = {navController.navigateUp()})}
+        composable("details"){ NoteDetailScreen(navigateBack = {navController.navigateUp()})}
+    }
     }
 
 
