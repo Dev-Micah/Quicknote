@@ -28,11 +28,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.micahnyabuto.note.R
 import com.micahnyabuto.note.data.Note
+import java.util.Calendar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +56,8 @@ fun HomeScreen(
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    Text("Notes")
+                    //Text("Notes" )
+                    Greeting()
                 }
             )
             },
@@ -175,4 +179,27 @@ private fun NoteItem(
         }
     }
 
+    }
+@Composable
+fun Greeting() {
+    val greetingText = greetingMessage()
+
+
+    Text(
+        text = greetingText,
+        fontSize = 22.sp,
+        fontWeight = FontWeight.SemiBold,
+    )
+
+}
+
+fun greetingMessage():String{
+    val hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+
+    return when (hour){
+        in 0..5 -> "Good Night! Welcome back"
+        in 6..11 -> "Good Morning! Welcome back"
+        in 12..17 -> "Good Afternoon! Welcome back"
+        else -> "Good Evening! Welcome back"
+    }
 }
