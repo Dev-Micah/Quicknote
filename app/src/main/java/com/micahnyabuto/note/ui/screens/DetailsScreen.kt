@@ -102,6 +102,7 @@ private fun NoteDetailsBody(
     onDelete: () -> Unit,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
+
 ) {
     Column(
         modifier = modifier.padding(8.dp),
