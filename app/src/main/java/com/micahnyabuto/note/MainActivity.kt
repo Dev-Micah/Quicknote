@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import com.example.compose.QuicknoteTheme
 import com.micahnyabuto.note.ui.navigation.NoteApp
 import com.micahnyabuto.note.ui.screens.HomeScreen
+import com.micahnyabuto.note.ui.screens.LandingScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuicknoteTheme {
-            NoteApp()
+            LandingScreen()
             }
         }
     }

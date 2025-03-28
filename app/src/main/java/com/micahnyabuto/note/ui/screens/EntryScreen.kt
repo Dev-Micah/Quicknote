@@ -73,7 +73,7 @@ fun EntryScreen(
                     IconButton(onClick = { navigateBack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Localized description"
+                            contentDescription = "navigate back"
                         )
                     }
                 },
