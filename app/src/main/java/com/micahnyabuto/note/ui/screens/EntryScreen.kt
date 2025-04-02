@@ -132,7 +132,7 @@ fun EntryForm(
     ){
         TextField(value = "",
             onValueChange = {},
-            maxLines = 70,
+            maxLines = 100,
             placeholder = { Text("Note something down") },
             modifier = Modifier
                 .fillMaxWidth()
